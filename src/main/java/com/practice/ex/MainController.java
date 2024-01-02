@@ -1,4 +1,4 @@
-package com.practice.article;
+package com.practice.ex;
 
 public class MainController {
 }
