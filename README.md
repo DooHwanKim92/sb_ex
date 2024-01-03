@@ -20,10 +20,50 @@
   앱의 사용자로부터 입력에 대한 응답, 모델 및 뷰를 업데이트하는 로직을 포함
 
 ## 스프링에서 의존성 주입(DI) 방법 3가지 방법
-- @Autowired annotation
-- 생성자
-- Setter 메서드
+- 생성자 주입
+  ```java
+  @Controller 
+  public class Controller{
+     private Service service;
 
+     @Autowired 
+     public Controller(Service service){
+       this.service = service; 
+     }
+  }
+  ```
+  생성자에 @Autowired를 붙여 의존성을 주입받을 수 있음.
+  생성자 주입은 인스턴스 생성시 1회 호출되는 것이 보장되기 때문에, 주입받은 객체가 변하지 않거나, 반드시 객체주입이 필요한 경우 강제하기 위해 사용됨.
+- 필드 주입
+  ```java
+  @Controller
+  public class Controller{
+    @Autowired 
+    private Service service;
+  }
+  ```
+  코드가 간결하고 편하지만 의존관계를 정확히 파악하기 힘듦. 
+  필드 주입 시 final 키워드를 선언할 수 없어 객체가 변할 수 있음. 
+  주입이 동시에 일어나 겹치는 경우 순환참조 에러가 남.
+- Setter 메서드
+  ```java
+  @Controller 
+  public class Controller{
+     private Service service;
+
+     @Autowired 
+     public setService(Service service){
+       this.service = service; 
+     }
+  }
+  ```
+  setter 혹은 사용자정의 메서드를 통해 의존관계 주입.
+  setter의 경우 객체가 변경될 필요성이 있을 때만 사용한다.
+- 생성자 주입을 권장하는 이유
+  1. 객체 불변성
+  생성자는 최초 1회만 실행
+  2. 테스트 용이
+  3. 순환참조 에러 방지
 ## JPA의 장점과 단점
 - 장점
   - SQL 문법으로 쿼리를 작성하지 않아도 된다
