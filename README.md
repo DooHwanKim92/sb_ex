@@ -21,7 +21,7 @@
 
 ## 스프링에서 의존성 주입(DI) 방법 3가지 방법
 - 생성자 주입
-  ```java
+```java
   @Controller 
   public class Controller{
      private Service service;
@@ -31,22 +31,22 @@
        this.service = service; 
      }
   }
-  ```
+```
   생성자에 @Autowired를 붙여 의존성을 주입받을 수 있음.
   생성자 주입은 인스턴스 생성시 1회 호출되는 것이 보장되기 때문에, 주입받은 객체가 변하지 않거나, 반드시 객체주입이 필요한 경우 강제하기 위해 사용됨.
 - 필드 주입
-  ```java
+```java
   @Controller
   public class Controller{
     @Autowired 
     private Service service;
   }
-  ```
+```
   코드가 간결하고 편하지만 의존관계를 정확히 파악하기 힘듦. 
   필드 주입 시 final 키워드를 선언할 수 없어 객체가 변할 수 있음. 
   주입이 동시에 일어나 겹치는 경우 순환참조 에러가 남.
 - Setter 메서드
-  ```java
+```java
   @Controller 
   public class Controller{
      private Service service;
@@ -56,9 +56,10 @@
        this.service = service; 
      }
   }
-  ```
+```
   setter 혹은 사용자정의 메서드를 통해 의존관계 주입.
   setter의 경우 객체가 변경될 필요성이 있을 때만 사용한다.
+  
 - 생성자 주입을 권장하는 이유
   1. 객체 불변성
   생성자는 최초 1회만 실행
