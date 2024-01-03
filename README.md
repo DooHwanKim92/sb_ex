@@ -34,6 +34,7 @@
 ```
   생성자에 @Autowired를 붙여 의존성을 주입받을 수 있음.
   생성자 주입은 인스턴스 생성시 1회 호출되는 것이 보장되기 때문에, 주입받은 객체가 변하지 않거나, 반드시 객체주입이 필요한 경우 강제하기 위해 사용됨.
+  @Autowired를 사용하지 않고 class에 @RequiredArgsConstructor를 사용하는 방식을 권장함.
 - 필드 주입
 ```java
   @Controller
